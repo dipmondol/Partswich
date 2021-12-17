@@ -1,0 +1,57 @@
+@extends('admin.adminMaster')
+@section('admin')
+
+<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+<div class="container-full">
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="box box-widget widget-user">
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                <div class="widget-user-header bg-black" style="background: url('../images/gallery/full/10.jpg') center center;">
+                    <h3 class="widget-user-username">Admin Name: {{$adminData->name}}</h3>
+                    <a href="{{route('admin.profile.edit')}}" style="float: right;" class="btn btn-rounded btn-success mb-5">Edit Profile</a>
+                    <h6 class="widget-user-desc">Email: {{$adminData->email}}</h6>
+                </div>
+                <div class="widget-user-image">
+                    <img class="rounded-circle" src="{{(!empty($adminData->profile_photo_path))?url('upload/adminImages/' .$adminData->profile_photo_path):url('upload/no_image.jpg')}}" alt="Admin Avatar" style="width: 100px; height:100px;">
+                </div>
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="description-block">
+                                <h5 class="description-header">12K</h5>
+                                <span class="description-text">FOLLOWERS</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-4 br-1 bl-1">
+                            <div class="description-block">
+                                <h5 class="description-header">550</h5>
+                                <span class="description-text">FOLLOWERS</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-4">
+                            <div class="description-block">
+                                <h5 class="description-header">158</h5>
+                                <span class="description-text">TWEETS</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </div>
+    </section>
+    <!-- /.content -->
+</div>
+
+<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+{!! Toastr::message() !!}
+@endsection
